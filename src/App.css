@@ -1,0 +1,103 @@
+body {
+  font-family: "Varela Round", sans-serif;
+}
+.form-control {
+  box-shadow: none;
+  font-weight: normal;
+  font-size: 13px;
+}
+a,
+.navbar a:active {
+  color: #888;
+  padding: 8px 20px;
+  background: transparent;
+  line-height: normal;
+}
+.navbar-form {
+  border: none;
+}
+.action-form {
+  width: 280px;
+  padding: 20px;
+  left: auto;
+  right: 0;
+  font-size: 14px;
+}
+.action-form a {
+  color: #33cabb;
+  padding: 0 !important;
+  font-size: 14px;
+}
+.action-form .hint-text {
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 13px;
+}
+.btn-primary,
+.navbar .btn-primary:active {
+  color: #fff;
+  background: #33cabb !important;
+  border: none;
+}
+.btn-primary:hover,
+.navbar .btn-primary:focus {
+  color: #fff;
+  background: #31bfb1 !important;
+}
+.social-btn .btn,
+.social-btn .btn:hover {
+  color: #fff;
+  margin: 0;
+  padding: 0 !important;
+  font-size: 13px;
+  border: none;
+  transition: all 0.4s;
+  text-align: center;
+  line-height: 34px;
+  width: 47%;
+  text-decoration: none;
+}
+.social-btn .facebook-btn {
+  background: #507cc0;
+}
+.social-btn .facebook-btn:hover {
+  background: #4676bd;
+}
+.social-btn .twitter-btn {
+  background: #64ccf1;
+}
+.social-btn .twitter-btn:hover {
+  background: #4ec7ef;
+}
+.social-btn .btn i {
+  margin-right: 5px;
+  font-size: 16px;
+  position: relative;
+  top: 2px;
+}
+.form-check-label input {
+  position: relative;
+  top: 1px;
+}
+
+.or-seperator {
+  margin-top: 32px;
+  text-align: center;
+  border-top: 1px solid #e0e0e0;
+}
+.or-seperator b {
+  color: #666;
+  padding: 0 8px;
+  width: 30px;
+  height: 30px;
+  font-size: 13px;
+  text-align: center;
+  line-height: 26px;
+  background: #fff;
+  display: inline-block;
+  border: 1px solid #e0e0e0;
+  border-radius: 50%;
+  position: relative;
+  top: -15px;
+  z-index: 1;
+}
