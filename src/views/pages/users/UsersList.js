@@ -1,8 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { createUser, deleteUser, getUsers } from "../../../store/actions/userAction";
+import {
+  createUser,
+  deleteUser,
+  getUsers,
+} from "../../../store/actions/userAction";
+ 
+import UsersTable from "./UsersTable";
+import Pagination from "../../../components/Pagination/Pagination";
 
 const UsersList = (props) => {
   const {
@@ -11,11 +18,21 @@ const UsersList = (props) => {
     deleteUser,
     createUser,
   } = props;
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [recordsPerPage] = useState(10);
+
   useEffect(() => {
     getUsers();
   }, [getUsers, deleteUser, createUser]);
   //console.log(props);
- 
+
+  const indexOfLastRecord = currentPage * recordsPerPage;
+  const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
+  const currentRecords = users.slice(indexOfFirstRecord, indexOfLastRecord);
+  const nPages = Math.ceil(users.length / recordsPerPage);
+
+  
   return (
     <div>
       <div className="container mt-5">
@@ -26,42 +43,12 @@ const UsersList = (props) => {
             <span>Add New ?User</span>
             <i className="fas fa-plus"></i>
           </Link>
-          <h5 className="my-3">Task List</h5>
-          <table className="table table-bordered">
-            <thead>
-              <tr>
-                <th>Title</th>
-                <th>Complited</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {users.map((user) => (
-                <tr key={user.id}>
-                  <td>{user.id}</td>
-                  <td>{user.name}</td>
-                  <td>
-                    <span className="options">
-                      <Link
-                        to={`/users/edit/${user.id}`}
-                        className="badge bg-primary m-1"
-                      >
-                        Edit
-                      </Link>                      
-                      <i
-                        onClick={() => {
-                          deleteUser(user.id);
-                        }}
-                        className="badge bg-danger"
-                      >
-                        Delete
-                      </i>
-                    </span>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          <UsersTable users={currentRecords} deleteUser={deleteUser} />
+          <Pagination
+                nPages={nPages}
+                currentPage={currentPage}
+                setCurrentPage={setCurrentPage}
+            />
         </div>
       </div>
     </div>
@@ -79,8 +66,8 @@ const mapStateToProps = (state) => ({
   users: state.users,
 });
 
-const mapDispatchToProps = (dispatch) => ({   
-  getUsers: () => dispatch( getUsers()),
+const mapDispatchToProps = (dispatch) => ({
+  getUsers: () => dispatch(getUsers()),
   deleteUser: (id) => dispatch(deleteUser(id)),
   createUser: (data) => dispatch(createUser(data)),
 });
