@@ -12,5 +12,8 @@ ReactJS — Simple Understanding Redux With Redux-Saga [React Redux-Saga: A guid
 
 React Redux Saga CRUD App(https://reactjsexample.com/react-redux-saga-crud-app/)
 
+A simple guide to Pagination in React (https://levelup.gitconnected.com/a-simple-guide-to-pagination-in-react-facd6f785bd0).
+  
+ - Simple-react-pagination Githhub Repo url(https://github.com/KunalN25/simple-react-pagination)
 
  
